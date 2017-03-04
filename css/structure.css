@@ -1,0 +1,84 @@
+
+@media only screen and (min-width : 320px) {
+  
+  .container {
+    margin: 0 auto;
+    width: 320px;
+  }
+  .one-column,
+  .two-column, 
+  .three-column, 
+  .four-column {
+    width: 100%;
+  }
+  
+  .one-column > .column,
+  .one-column > .row > .column,
+  .two-column > .column,
+  .two-column > .row > .column,
+  .three-column > .column,
+  .three-column > .row > .column,
+  .four-column > .column,
+  .four-column > .row > .column {
+    width: 100%;
+  }
+  .column {
+    box-sizing: border-box;
+    float: left;
+    padding: 0 10px;
+  }
+}
+
+@media only screen and (min-width : 480px) {
+  
+  .container {
+    width: 480px;
+  }
+  
+}
+
+@media only screen and (min-width : 768px) {
+  
+  .container {
+    width: 768px;
+  }
+  .two-column > .column,
+  .two-column > .row > .column {
+    width: 50%;
+  }
+  .three-column > .column, 
+  .three-column > .row > .column {
+    width: 33%;
+  }
+  .four-column > .column,
+  .four-column > .row > .column {
+    width: 25%;
+  }
+  .three-column > .two-col-span,
+  .three-column > .row > .two-col-span {
+    width: 66%;
+  }
+  .four-column > .two-col-span,
+  .four-column > .row > .two-col-span {
+    width: 50%;
+  }
+  .four-column > .three-col-span,
+  .four-column > .row >.three-col-span {
+    width: 75%;
+  }
+}
+
+@media only screen and (min-width : 992px) {
+  
+  .container {
+    width: 992px;
+  }
+  
+}
+
+@media only screen and (min-width : 1200px) {
+  
+  .container {
+    width: 1170px;
+  }
+}
