@@ -1,0 +1,158 @@
+body {
+  margin: 0px; }
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Montserrat',sans-serif; }
+
+a {
+  text-decoration: none; }
+
+nav {
+  width: 100%;
+  display: block; }
+  nav ul {
+    padding-left: 0px;
+    margin: 0px;
+    list-style: none; }
+    nav ul li {
+      display: inline-block;
+      font-family: 'Roboto',sans-serif; }
+  nav .top-nav {
+    background: #242424;
+    height: 45px; }
+    nav .top-nav .title {
+      padding: 8px;
+      float: left; }
+      nav .top-nav .title a {
+        color: #57c5a0;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 24px;
+        text-transform: uppercase; }
+    nav .top-nav .login {
+      float: right; }
+      nav .top-nav .login ul li {
+        display: inline-block;
+        padding: 12px 20px; }
+        nav .top-nav .login ul li a {
+          color: #7e7e7e;
+          font-size: 11px; }
+        nav .top-nav .login ul li:nth-child(n) {
+          border-right: 1px solid #383838; }
+        nav .top-nav .login ul li:last-child {
+          border: none; }
+  nav .bottom-nav {
+    background: white;
+    height: 60px; }
+    nav .bottom-nav ul.nav {
+      float: left; }
+      nav .bottom-nav ul.nav li {
+        padding: 20px; }
+        nav .bottom-nav ul.nav li a {
+          color: #242424;
+          font-size: 16px; }
+        nav .bottom-nav ul.nav li:nth-child(n) {
+          border-left: 1px solid #eeeeee; }
+        nav .bottom-nav ul.nav li:last-child {
+          border-right: 1px solid #eeeeee; }
+    nav .bottom-nav ul.lists {
+      float: right; }
+      nav .bottom-nav ul.lists li {
+        padding: 20px 10px; }
+        nav .bottom-nav ul.lists li a {
+          color: #242424; }
+          nav .bottom-nav ul.lists li a span {
+            margin-left: 10px;
+            display: inline-block;
+            padding: 3px 5px;
+            font-size: 12px;
+            border-radius: 2px;
+            color: white; }
+        nav .bottom-nav ul.lists li:nth-child(n) {
+          border-left: 1px solid #cccccc; }
+        nav .bottom-nav ul.lists li:last-child {
+          border-right: 1px solid #cccccc; }
+      nav .bottom-nav ul.lists .wish span {
+        background: #adadad; }
+      nav .bottom-nav ul.lists .basket span {
+        background: #57c5a0; }
+
+.products {
+  background: #ebe7df; }
+  .products .product {
+    background: white;
+    position: relative;
+    width: 100%; }
+    .products .product img {
+      width: 100%; }
+    .products .product h2 {
+      padding-top: 10px;
+      padding-bottom: 15px;
+      padding-left: 90px;
+      border-top: 1px solid #cccccc;
+      font-size: 18px; }
+    .products .product h5 {
+      position: absolute;
+      bottom: 0px;
+      left: 10px;
+      height: 65px;
+      width: 65px;
+      color: white;
+      background: #57c5a0;
+      font-size: 13px;
+      line-height: 65px;
+      text-align: center;
+      margin-bottom: 0px; }
+
+.filter {
+  width: 100%;
+  display: block;
+  background: #2e2e2e; }
+  .filter .container > ul {
+    padding: 0px;
+    margin: 0px;
+    list-style: none; }
+    .filter .container > ul > li {
+      color: white;
+      display: inline-block;
+      font-family: 'Roboto',sans-serif;
+      font-weight: 400;
+      width: 25%;
+      text-align: center;
+      padding: 15px 10px;
+      vertical-align: top; }
+
+.dropdown {
+  text-align: center;
+  background: #242424;
+  position: relative;
+  padding: 10px; }
+  .dropdown input {
+    display: none; }
+  .dropdown label {
+    font-size: 12px; }
+  .dropdown span {
+    position: absolute;
+    right: 10px;
+    top: 20px; }
+  .dropdown h4 {
+    margin-top: 0;
+    margin-bottom: 5px; }
+  .dropdown ul {
+    display: none;
+    margin: 0px;
+    position: absolute;
+    padding-left: 0px;
+    top: 80px;
+    left: 0px;
+    background: #242424;
+    list-style: none;
+    margin: 0px;
+    text-align: center;
+    width: 100%;
+    z-index: 10; }
+    .dropdown ul li {
+      padding: 10px 0;
+      border-bottom: 1px solid #2e2e2e;
+      cursor: pointer; }
+
+/*# sourceMappingURL=style.css.map */
