@@ -14,7 +14,6 @@ if (isset($_SESSION["loggedInUser"])) {
 } else if (isset($_REQUEST["loginbutton"])) {
   $username = $_REQUEST["username"];
   $password = $_REQUEST["password"];
-  echo "password :".$password." username :".$username;
   $currentuser = getCustomer($username, $password);
   if ($currentuser) {
     $_SESSION["loggedInUser"] = $currentuser;

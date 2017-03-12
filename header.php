@@ -1,6 +1,6 @@
 <!-- NAV -->
 
-<?php include_once ("controllers/header_controller.php"); ?>
+<?php include_once ("controllers/header-controller.php"); ?>
 
 <nav>
   <div class="top-nav">
@@ -12,7 +12,7 @@
         <ul>
           <li><a href=""><span class="fa fa-search"></span></a></li>
           <?php if($currentuser) : ?>
-          <li>Hello, <?php= $currentuser->forename ?></li>
+          <li>Hello, <?= $currentuser->forename ?></li>
           <?php else: ?>
           <li><a>LOGIN or REGISTER</a></li>
           <?php endif ?>
@@ -33,12 +33,12 @@
       <ul class="lists">
         <li class="wish"><a href="">
           <icon class="fa fa-star-o"></icon>
-          <span><?php= $wishlist->length ?></span>
+          <span><?= count($wishlist) ?></span>
           </a>
         </li>
         <li class="basket"><a href="">
           <icon class="fa fa-shopping-cart"></icon>
-          <span><?php= $basket->length ?></span>
+          <span><?= count($basket) ?></span>
           </a>
         </li>
       </ul>

@@ -11,6 +11,8 @@
 </head>
   <body>
   
+    <?php require_once ("header.php") ?>
+    
     <!-- Show products -->
     
     <section class="filter">

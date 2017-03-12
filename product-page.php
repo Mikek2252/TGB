@@ -1,7 +1,4 @@
-<?php
-
-require_once ("controllers/login-controller.php");
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -13,23 +10,34 @@ require_once ("controllers/login-controller.php");
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 </head>
   <body>
-    <?php require_once ("header.php") ?>
   
-    <section class="login">
+    <?php require_once ("header.php") ?>
+    
+    <!-- Product -->
+    
+    <section class="product-page">
       <div class="container">
-        <div class="four-column">
-          <div class="column"></div>
-          <div class="two-span-column">
-            <form action="login-page.php" method="post" class="login">
-              <input type="text" name="username" placeholder="username"/>
-              <input type="password" name="password" placeholder="password"/>
-              <input type="submit" name="loginbutton" value="submit"/>
-            </form>
+        <div class="three-column">
+          <div class="column">
+            <div class="product">
+              <img src="img/product_temp.jpg" />
+              <h2>Even &amp; Odd</h2>
+              <h5>$145.99</h5>
+            </div>
           </div>
-          <div class="column"></div>
+          <div class="column">
+          
+          </div>
+          <div class="column">
+          
+          </div>
         </div>
       </div>
-    </section>  
+    </section>
+    
+    <!-- Product -->
+    
+    
     
   </body>
 </html>
