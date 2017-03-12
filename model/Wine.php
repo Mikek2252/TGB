@@ -9,6 +9,7 @@
     private $costPerBottle;
     private $countryOfOrgin;
     private $dateAdded;
+    private $offer;
 
     function __get($name) {
       return $this->$name;

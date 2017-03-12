@@ -11,47 +11,6 @@
 </head>
   <body>
   
-    <!-- NAV -->
-    
-    <nav>
-      <div class="top-nav">
-        <div class="container">
-          <div class="title">
-            <a href="" >TEN GREEN BOTTLES</a>
-          </div>  
-          <div class="login">
-            <ul>
-              <li><a href=""><span class="fa fa-search"></span></a></li>
-              <li><a>LOGIN or REGISTER</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="bottom-nav">
-        <div class="container">
-          <ul class="nav">
-            <li><a href="">Home</a></li>
-            <li><a href="">Products</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Pages</a></li>
-            <li><a href="">Blog</a></li>
-            <li><a href="">Contact</a></li>
-          </ul>
-          <ul class="lists">
-            <li class="wish"><a href="">
-              <icon class="fa fa-star-o"></icon><span>33</span>
-              </a>
-            </li>
-            <li class="basket"><a href="">
-              <icon class="fa fa-shopping-cart"></icon><span>3</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    
-    <!-- END OF NAV -->
     <!-- Show products -->
     
     <section class="filter">
@@ -59,8 +18,7 @@
         <ul>
           <li>
             <h1>Shop by</h1>
-          </li>
-          <li>
+          </li><li>
             <div class="dropdown">
               <h4>Color</h4>
               <label>all</label>
@@ -70,10 +28,24 @@
                 <li name="red">Red</li>
                 <li name="white">White</li>
                 <li name="rose">Rose</li>
+                <li name="all">All</li>
               </ul>
             </div>
-          </li>
-          <li>
+          </li><li>
+            <div class="dropdown">
+              <h4>Type</h4>
+              <label>all</label>
+              <span class="fa fa-chevron-circle-down"></span>
+              <input id="colour" type="text" />
+              <ul>
+                <li name="dry">Dry</li>
+                <li name="sweet">Sweet</li>
+                <li name="light">Light</li>
+                <li name="fullbody">Full bodied</li>
+                <li name="all">All</li>
+              </ul>
+            </div>
+          </li><li>
             <div class="dropdown">
               <h4>Country of Origin</h4>
               <label>all</label>
@@ -83,17 +55,21 @@
                 <li name="France">France</li>
                 <li name="Italy">Italy</li>
                 <li name="Spain">Spain</li>
+                <li name="all">All</li>
               </ul>
             </div>
+          </li><li>
             <div class="dropdown">
               <h4>Price</h4>
               <label>all</label>
               <span class="fa fa-chevron-circle-down"></span>
-              <input id="country" type="text" />
+              <input id="price" type="text" />
               <ul>
-                <li name="France">France</li>
-                <li name="Italy">Italy</li>
-                <li name="Spain">Spain</li>
+                <li name="1">&lt; £5</li>
+                <li name="2">£5 - £10</li>
+                <li name="3">£10 - £20</li>
+                <li name="4">£20+</li>
+                <li name="all">All</li>
               </ul>
             </div>
           </li>

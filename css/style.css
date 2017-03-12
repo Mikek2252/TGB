@@ -83,7 +83,9 @@ nav {
     position: relative;
     width: 100%; }
     .products .product img {
-      width: 100%; }
+      width: 100%;
+      padding: 20px 130px;
+      box-sizing: border-box; }
     .products .product h2 {
       padding-top: 10px;
       padding-bottom: 15px;
@@ -110,22 +112,25 @@ nav {
   .filter .container > ul {
     padding: 0px;
     margin: 0px;
+    border-top: 1px solid transparent;
     list-style: none; }
     .filter .container > ul > li {
       color: white;
       display: inline-block;
       font-family: 'Roboto',sans-serif;
       font-weight: 400;
-      width: 25%;
+      width: 20%;
       text-align: center;
       padding: 15px 10px;
-      vertical-align: top; }
+      vertical-align: top;
+      box-sizing: border-box; }
 
 .dropdown {
   text-align: center;
   background: #242424;
   position: relative;
-  padding: 10px; }
+  padding: 10px;
+  box-sizing: border-box; }
   .dropdown input {
     display: none; }
   .dropdown label {

@@ -1,7 +1,6 @@
 <?php
   class ShoppingListItem {
     private $wineID;
-    private $customerID;
     private $dateAdded;
 
     function __get($name) {

@@ -5,8 +5,10 @@
     private $lastname;
     private $email;
     private $phoneNumber;
-    private $orders[];
-    private $addresses[];
+    private $orders;
+    private $addresses;
+    private $basket;
+    private $wishlist;
 
     function __get($name) {
       return $this->$name;

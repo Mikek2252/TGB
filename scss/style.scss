@@ -121,6 +121,8 @@ nav {
     width: 100%;
     img {
       width: 100%;
+      padding: 20px 130px;
+      box-sizing: border-box;
     }
     h2 {
       padding-top: 10px;
@@ -152,16 +154,18 @@ nav {
   .container > ul {
     padding: 0px;
     margin: 0px;
+    border-top: 1px solid transparent;
     list-style: none;
     > li {
       color: white;
       display: inline-block;
       font-family: 'Roboto',sans-serif;
       font-weight: 400;
-      width: 25%;
+      width: 20%;
       text-align: center;
       padding: 15px 10px;
       vertical-align: top;
+      box-sizing: border-box;
     }
   }
   background: $filter-bg;
@@ -172,6 +176,7 @@ nav {
   background: $filter-btn;
   position: relative;
   padding: 10px;
+  box-sizing: border-box;
   input {
     display: none;
   }
