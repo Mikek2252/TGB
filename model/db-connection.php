@@ -87,5 +87,77 @@
                          $wine->costPerBottle,
                          $wine->countryOfOrigin]);
     $statement->fetch();
+	
   }
+  
+    function updateWine($wine) {
+    global $pdo;
+    $statement = $pdo->prepare('UPDATE Wine SET name = ? WHERE wineID = ?');
+    $statement->execute([$wine->name,
+                         $wine->color,
+                         $wine->flavour,
+                         $wine->description,
+                         $wine->bottleSize,
+                         $wine->costPerBottle,
+                         $wine->countryOfOrigin]);
+    $statement->fetch();
+	
+  }
+  
+  /* SEARCHING DATABASE */
+  function getSearchResults($wine){
+  global $pdo;
+    $statement = $pdo->prepare('SELECT 20 as relevance, * FROM Wine WHERE name LIKE ? OR description LIKE ?');
+    $statement->execute([$wine->name,
+                         $wine->color,
+                         $wine->flavour,
+                         $wine->description,
+                         $wine->bottleSize,
+                         $wine->costPerBottle,
+                         $wine->countryOfOrigin]);
+    $statement->setFetchMode(PDO::FETCH_CLASS, "Wine");
+    $statement->fetch();
+  }
+  
+  /* UPDATE CUSTOMER ORDER TABLE */
+  function addOrder($CustomerOrder){
+    global $pdo;
+    $statement = $pdo->prepare('INSERT INTO CustomerOrder (orderID,customerID,orderDate,addressID,paymentTaken) VALUES (?,?,?,?,?)');
+    $statement->execute([$CustomerOrder->orderID,
+                         $CustomerOrder->customerID,
+                         $CustomerOrder->orderDate,
+                         $CustomerOrder->addressID,
+                         $CustomerOrder->paymentTaken]);
+    $statement->fetch();
+	
+  }
+  
+  /* ADD Customer Order*/
+  function addOrderItem($CustomerOrderItem){
+    global $pdo;
+    $statement = $pdo->prepare('INSERT INTO CustomerOrderItem (orderID,wineID,quantity,deliveryDate) VALUES (?,?,?,?)');
+    $statement->execute([$CustomerOrderItem->orderID,
+                         $CustomerOrderItem->wineID,
+                         $CustomerOrderItem->quantity,
+                         $CustomerOrderItem->deliveryDate]);
+    $statement->fetch();
+	
+  }
+  
+  /* search orders*/
+  function searchOrder($CustomerOrder){
+    $statement = $pdo->prepare('select*from(SELECT 10 as relevance, * FROM CustomerOrder WHERE orderID LIKE ? 
+	union
+	SELECT 20 as relevance, * FROM CustomerOrder WHERE orderID LIKE ?)order by relevance asc');
+');
+	   global $pdo;
+    $statement->execute([$CustomerOrder->orderID,
+                         $CustomerOrder->customerID,
+                         $CustomerOrder->addressID,
+                         $CustomerOrder->paymentTaken,
+                         $CustomerOrder->orderDate]);
+    $statement->setFetchMode(PDO::FETCH_CLASS, "CustomerOrder");
+    $statement->fetch();
+  }
+  
 ?> 
