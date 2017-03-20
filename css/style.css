@@ -4,19 +4,44 @@ body {
 h1, h2, h3, h4, h5 {
   font-family: 'Montserrat',sans-serif; }
 
+p,
+a,
+li {
+  font-family: 'Roboto', sans-serif; }
+
+p {
+  font-size: 14px; }
+
 a {
   text-decoration: none; }
+
+button {
+  background: #57c5a0;
+  border: 1px solid #57c5a0;
+  border-radius: 3px;
+  color: #ffffff;
+  display: block;
+  font-size: 18px;
+  font-family: 'Montserrat',sans-serif;
+  padding: 10px 20px;
+  margin-bottom: 15px; }
+  button.wishlist {
+    background: #adadad;
+    border-color: #adadad;
+    font-size: 16px;
+    padding: 8px 15px; }
 
 nav {
   width: 100%;
   display: block; }
   nav ul {
-    padding-left: 0px;
+    padding-left: 0;
     margin: 0px;
     list-style: none; }
     nav ul li {
-      display: inline-block;
-      font-family: 'Roboto',sans-serif; }
+      display: block;
+      font-family: 'Roboto',sans-serif;
+      float: left; }
   nav .top-nav {
     background: #242424;
     height: 45px; }
@@ -81,17 +106,26 @@ nav {
   .products .product {
     background: white;
     position: relative;
-    width: 100%; }
+    width: 100%;
+    margin-bottom: 20px; }
     .products .product img {
       width: 100%;
       padding: 20px 130px;
       box-sizing: border-box; }
     .products .product h2 {
       padding-top: 10px;
-      padding-bottom: 15px;
+      padding-bottom: 0px;
       padding-left: 90px;
       border-top: 1px solid #cccccc;
-      font-size: 18px; }
+      font-size: 18px;
+      margin-bottom: 2px; }
+    .products .product h4 {
+      padding-left: 90px;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 100;
+      color: #7e7e7e;
+      margin: 0px;
+      padding-bottom: 5px; }
     .products .product h5 {
       position: absolute;
       bottom: 0px;
@@ -109,21 +143,23 @@ nav {
   width: 100%;
   display: block;
   background: #2e2e2e; }
-  .filter .container > ul {
-    padding: 0px;
-    margin: 0px;
-    border-top: 1px solid transparent;
-    list-style: none; }
-    .filter .container > ul > li {
-      color: white;
-      display: inline-block;
-      font-family: 'Roboto',sans-serif;
-      font-weight: 400;
-      width: 20%;
-      text-align: center;
-      padding: 15px 10px;
-      vertical-align: top;
-      box-sizing: border-box; }
+  .filter .container {
+    overflow: visible; }
+    .filter .container > ul {
+      padding: 0px;
+      margin: 0px;
+      border-top: 1px solid transparent;
+      list-style: none; }
+      .filter .container > ul > li {
+        color: white;
+        display: inline-block;
+        font-family: 'Roboto',sans-serif;
+        font-weight: 400;
+        width: 20%;
+        text-align: center;
+        padding: 15px 10px;
+        vertical-align: top;
+        box-sizing: border-box; }
 
 .dropdown {
   text-align: center;
@@ -159,5 +195,11 @@ nav {
       padding: 10px 0;
       border-bottom: 1px solid #2e2e2e;
       cursor: pointer; }
+
+.red {
+  color: red; }
+
+.green {
+  color: #57c5a0; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+require_once ("controllers/archive-product-controller.php");
+?><!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -100,26 +102,30 @@
     
     <section class="products">
       <div class="container">
-        <div class="one-column">
-          <div class="column">
-            <h1>All Products</h1>
-          </div>
-        </div>
-        <div class="three-column">
-          <div class="column">
-            <div class="product">
-              <img src="img/product_temp.jpg" />
-              <h2>Even &amp; Odd</h2>
-              <h5>$145.99</h5>
+        <div class="row">
+          <div class="one-column">
+            <div class="column">
+              <h1>All Products</h1>
             </div>
           </div>
-          <div class="column">
-          
-          </div>
-          <div class="column">
-          
-          </div>
         </div>
+        <?php foreach($wines as $key => $wine) { ?>
+        <?php if ($key == 0 || $key % 3 == 0 ) { ?>
+        <div class="row">
+        <?php } ?>
+          <div class="three-column">
+            <div class="column">
+              <div class="product">
+                <img src="<?= $wine->getImgURL() ?>" />
+                <h2><?= $wine->name ?></h2>
+                <h4>Colour : <?= $wine->colour ?></h4>
+                <h5>£ <?= $wine->costPerBottle ?></h5>
+              </div>
+            </div>
+          </div>
+        <?php if ($key % 3 == 2) { ?>
+        </div>
+        <?php } } ?>
       </div>
     </section>
     

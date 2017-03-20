@@ -19,7 +19,8 @@
                 "includePaths": [],
                 "sourceComments": false,
                 "outputStyle": "nested"
-            }
+            },
+            "fonts.fontSize": "12px"
         }
     }
 }

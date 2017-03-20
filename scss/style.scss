@@ -1,6 +1,7 @@
 $pale-green: #57c5a0;
 $grey-text: #7e7e7e;
 $grey-border: #383838;
+$wishlist-grey: #adadad;
 $nav-border: #eeeeee;
 $filter-bg: #2e2e2e;
 $filter-btn: #242424;
@@ -13,20 +14,49 @@ h1, h2, h3, h4, h5 {
   font-family: 'Montserrat',sans-serif;
 }
 
+p, 
+a, 
+li {
+  font-family: 'Roboto', sans-serif;
+}
+
+p {
+  font-size: 14px;
+}
+
 a {
   text-decoration: none;
+}
+
+button {
+  background: $pale-green;
+  border: 1px solid $pale-green;
+  border-radius: 3px;
+  color: #ffffff;
+  display: block;
+  font-size: 18px;
+  font-family: 'Montserrat',sans-serif;
+  padding: 10px 20px;
+  margin-bottom: 15px;
+  &.wishlist {
+    background: $wishlist-grey;
+    border-color: $wishlist-grey;
+    font-size: 16px;
+    padding: 8px 15px;
+  }
 }
 
 nav {
   width: 100%;
   display: block;
   ul {
-    padding-left: 0px;
+    padding-left: 0;
     margin: 0px;
     list-style: none;
     li {
-      display: inline-block;
+      display: block;
       font-family: 'Roboto',sans-serif;
+      float: left;
     }
   }
   
@@ -103,7 +133,7 @@ nav {
         }
       }
       .wish span {
-        background: #adadad;
+        background: $wishlist-grey;
       }
       .basket span {
         background: $pale-green;
@@ -119,6 +149,7 @@ nav {
     background: white;
     position: relative;
     width: 100%;
+    margin-bottom: 20px;
     img {
       width: 100%;
       padding: 20px 130px;
@@ -126,10 +157,19 @@ nav {
     }
     h2 {
       padding-top: 10px;
-      padding-bottom: 15px;
+      padding-bottom: 0px;
       padding-left: 90px;
       border-top: 1px solid #cccccc;
       font-size: 18px;
+      margin-bottom: 2px;
+    }
+    h4 {
+      padding-left: 90px;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 100;
+      color: $grey-text;
+      margin: 0px;
+      padding-bottom: 5px;
     }
     h5 {
       position: absolute;
@@ -151,21 +191,24 @@ nav {
 .filter {
   width: 100%;
   display: block;
-  .container > ul {
-    padding: 0px;
-    margin: 0px;
-    border-top: 1px solid transparent;
-    list-style: none;
-    > li {
-      color: white;
-      display: inline-block;
-      font-family: 'Roboto',sans-serif;
-      font-weight: 400;
-      width: 20%;
-      text-align: center;
-      padding: 15px 10px;
-      vertical-align: top;
-      box-sizing: border-box;
+  .container {
+    overflow: visible;
+    > ul {
+      padding: 0px;
+      margin: 0px;
+      border-top: 1px solid transparent;
+      list-style: none;
+      > li {
+        color: white;
+        display: inline-block;
+        font-family: 'Roboto',sans-serif;
+        font-weight: 400;
+        width: 20%;
+        text-align: center;
+        padding: 15px 10px;
+        vertical-align: top;
+        box-sizing: border-box;
+      }
     }
   }
   background: $filter-bg;
@@ -212,4 +255,18 @@ nav {
     }
   }
 }
+
+.product-page {
+
+}
+//Used as a warning 
+.red {
+  color: red;
+}
+
+.green {
+  color: $pale-green;
+}
+
+
 

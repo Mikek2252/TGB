@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+require_once ("controllers/product-controller.php");
+?><!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -12,24 +14,35 @@
   <body>
   
     <?php require_once ("header.php") ?>
-    
     <!-- Product -->
     
     <section class="product-page">
       <div class="container">
-        <div class="three-column">
+        <div class="four-column">
           <div class="column">
             <div class="product">
-              <img src="img/product_temp.jpg" />
-              <h2>Even &amp; Odd</h2>
-              <h5>$145.99</h5>
+              <img src="<?= $wine->getImgURL() ?>" />
             </div>
           </div>
-          <div class="column">
-          
-          </div>
-          <div class="column">
-          
+          <div class="three-col-span">
+            <h1><?= $wine->name ?></h1>
+            <?php if($wine->inStock()) { ?>
+            <h3 class="green"><?= $wine->quantity ?> bottles available</h3>
+            <?php } else {?>
+            <h3 class="red">Out of Stock</h3>
+            <?php } ?>
+            <h4>Price : £<?= $wine->costPerBottle ?></h4>
+            <h5>Information</h5>
+            <ul>
+              <li>Color : <?= $wine->colour ?></li>
+              <li>Origin : <?= $wine->countryOfOrigin ?></li>
+              <li><?= $wine->FlavourType(); ?> : <?= $wine->flavour ?></li>
+              <li>Size : <?= $wine->bottleSize ?> </li>
+            </ul>
+            <p><?= $wine->description ?></p>
+            
+            <button class="basket">Add to Basket</button>
+            <button class="wishlist">Add to Wishlist</button>
           </div>
         </div>
       </div>

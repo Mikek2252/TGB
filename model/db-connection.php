@@ -49,6 +49,15 @@
     return $wine;
   }
 
+  function getAllWines() {
+    global $pdo;
+    $statement = $pdo->prepare('SELECT * FROM Wine');
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_CLASS, "Wine");
+    $wines = $statement->fetchAll();
+    return $wines;
+  }
+
   function getWinesOnOffer() {
     global $pdo;
     $date  = date('Y-m-d');

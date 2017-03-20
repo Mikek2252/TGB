@@ -1,7 +1,8 @@
 @media only screen and (min-width: 320px) {
   .container {
     margin: 0 auto;
-    width: 320px; }
+    width: 320px;
+    overflow: hidden; }
   .one-column,
   .two-column,
   .three-column,
@@ -17,7 +18,9 @@
     .four-column > .column,
     .four-column > * > .column {
       width: 100%; }
-  .column {
+  .column,
+  .two-col-span,
+  .three-col-span {
     box-sizing: border-box;
     float: left;
     padding: 0 10px; } }
