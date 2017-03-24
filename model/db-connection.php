@@ -146,18 +146,14 @@
   
   /* search orders*/
   function searchOrder($CustomerOrder){
-    $statement = $pdo->prepare('select*from(SELECT 10 as relevance, * FROM CustomerOrder WHERE orderID LIKE ? 
-	union
-	SELECT 20 as relevance, * FROM CustomerOrder WHERE orderID LIKE ?)order by relevance asc');
-');
-	   global $pdo;
+    $statement = $pdo->prepare('SELECT 10 as relevance, * FROM CustomerOrder WHERE orderID LIKE ? ');
+    
+    global $pdo;
     $statement->execute([$CustomerOrder->orderID,
-                         $CustomerOrder->customerID,
-                         $CustomerOrder->addressID,
-                         $CustomerOrder->paymentTaken,
-                         $CustomerOrder->orderDate]);
+                         $CustomerOrder->customerID]);
     $statement->setFetchMode(PDO::FETCH_CLASS, "CustomerOrder");
-    $statement->fetch();
+    $orders = $statement->fetchAll();
+    return $orders;
   }
   
 ?> 
