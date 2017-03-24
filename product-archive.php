@@ -40,7 +40,7 @@ require_once ("controllers/archive-product-controller.php");
               <h4>Type</h4>
               <label>all</label>
               <span class="fa fa-chevron-circle-down"></span>
-              <input id="colour" type="text" />
+              <input id="flavour" type="text" />
               <ul>
                 <li name="dry">Dry</li>
                 <li name="sweet">Sweet</li>
@@ -92,14 +92,52 @@ require_once ("controllers/archive-product-controller.php");
           $(this).find('ul').toggle();
         });
         $('.dropdown li').on('click', function() {
-          console.log($(this).parent().parent());
+
           var newVal = $(this).attr('name');
           $(this).parent().parent().find('input').val(newVal);
           $(this).parent().parent().find('label').text($(this).text());
         })
       });
+      
+      function getWinesByFilter() {
+        var price = $("#price").val();
+        var country = $("#country").val();
+        var colour = $("#colour").val();
+        var flavour = $("flavour").val();
+        
+        $.get("services/getWinesService.php?colour="+colour+"&flavour="+flavour+"&country="+country+"&price="+price, winesCallback);
+      }
+      
+
+      function winesCallback(result) {
+        
+        $(".products").not('.row:first').remove();
+        var row;
+        for (var i = 0; i < result.length; i++)
+        {
+          if (i ==0 || i % 3 == 0) {
+            row = $("<div class='row'></div>")
+          }
+          var wine = result[i];
+          var product = $("<div class='product'></div>");
+          
+          product.append("img src='"+wine.url+"' />");
+          product.append("<h2>"+wine.name+"</h2>");
+          product.append("<h4>Colour: "+wine.colour+"</h2>");
+          product.append("<h2>£ "+wine.costPerBottle+"</h2>");
+          
+          var column = $("<div class='column'></div>")
+          column.append(product);
+          $(row).append(column);
+          
+          if (i % 3 === 2 || i === result.length-1) {
+            $("products").append(row);
+          }
+        }
+      }
+
     </script>
-    
+
     <section class="products">
       <div class="container">
         <div class="row">

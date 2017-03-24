@@ -1,5 +1,5 @@
 <?php
-  class Wine {
+  class Wine implements JsonSerializable {
     private $wineID;
     private $name;
     private $img;
@@ -35,6 +35,9 @@
       } else if (strtolower($this->colour) == "red") {
         return 'Body';
       }
+    }
+    public function jsonSerialize()  {
+      return get_object_vars($this);
     }
   }
 ?>

@@ -48,6 +48,33 @@
     $wine = $statement->fetch();
     return $wine;
   }
+  
+  function getWineCount() {
+    global $pdo;
+    $statement = $pdo->prepare('SELECT COUNT(*) FROM Wine');
+    $statement->execute();
+    $count = $statement->fetch();
+    return $count;
+  }
+
+  function getPageOfWine($page, $perPage) {
+    $start = ($page * $perPage) - $perpage;
+    global $pdo;
+    $statement = $pdo->prepare('SELECT * FROM Wine LIMIT :offset, :count');
+    $statement->bindValue( ':offset', $start, PDO::PARAM_INT );
+    $statement->bindValue( ':count', $perPage, PDO::PARAM_INT );
+    
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_CLASS, "Wine");
+    $wines = $statement->fetchAll();
+    
+    $wineCount = getWineCount();
+    $hasNext = ($wineCount > ($start + $perPage));
+    return array(
+      "wines" => $wines,
+      "hasNext" => $hasNext
+    );
+  }
 
   function getAllWines() {
     global $pdo;
@@ -92,9 +119,9 @@
   
     function updateWine($wine) {
     global $pdo;
-    $statement = $pdo->prepare('UPDATE Wine SET name = ? WHERE wineID = ?');
+    $statement = $pdo->prepare('UPDATE Wine SET name = ?, colour = ?, flavour = ?, description = ?, bottleSize = ?, costPerBottle = ?, countryOfOrigin = ?  WHERE wineID = ?');
     $statement->execute([$wine->name,
-                         $wine->color,
+                         $wine->colour,
                          $wine->flavour,
                          $wine->description,
                          $wine->bottleSize,
@@ -109,7 +136,7 @@
   global $pdo;
     $statement = $pdo->prepare('SELECT 20 as relevance, * FROM Wine WHERE name LIKE ? OR description LIKE ?');
     $statement->execute([$wine->name,
-                         $wine->color,
+                         $wine->colour,
                          $wine->flavour,
                          $wine->description,
                          $wine->bottleSize,
@@ -154,6 +181,31 @@
     $statement->setFetchMode(PDO::FETCH_CLASS, "CustomerOrder");
     $orders = $statement->fetchAll();
     return $orders;
+  }
+
+
+  /* JSON requests */
+  function getWinesJSON($colour, $flavour, $country, $price) {
+    $string = 'SELECT * FROM Wine WHERE ';
+    $params = [];
+    if ($colour != "all") {
+      $string = $string."colour=? ";
+      array_push($params, $colour);
+    }
+    if ($flavour != "all") {
+      $string = $string."flavour=? ";
+      array_push($params, $flavour);
+    }
+    if ($country !== "all") {
+      $string = $string."countryOfOrigin=? ";
+      array_push($params, $country);
+    }
+    global $pdo;
+    $statement = $pdo->prepare($string);
+    $statement->execute($params);
+    $statement->setFetchMode(PDO::FETCH_CLASS, "Wine");
+    $wines = $statement->fetchAll();
+    return json_encode($wines);
   }
   
 ?> 

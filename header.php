@@ -14,7 +14,7 @@
           <?php if($currentuser) : ?>
           <li>Hello, <?= $currentuser->forename ?></li>
           <?php else: ?>
-          <li><a>LOGIN or REGISTER</a></li>
+          <li><a href="login-page.php">LOGIN or REGISTER</a></li>
           <?php endif ?>
         </ul>
       </div>
@@ -23,12 +23,8 @@
   <div class="bottom-nav">
     <div class="container">
       <ul class="nav">
-        <li><a href="">Home</a></li>
-        <li><a href="">Products</a></li>
-        <li><a href="">About</a></li>
-        <li><a href="">Pages</a></li>
-        <li><a href="">Blog</a></li>
-        <li><a href="">Contact</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="product-archive.php">Products</a></li>
       </ul>
       <ul class="lists">
         <li class="wish"><a href="">
