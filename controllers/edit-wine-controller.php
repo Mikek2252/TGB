@@ -7,36 +7,31 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 if (isset($_REQUEST["editWine"])) {
-  $wineID = $_REQUEST["wineID"];
-  $name = $_REQUEST["name"];
-  $colour = $_REQUEST["colour"];
-  $flavour = $_REQUEST["flavour"];
-  $description = $_REQUEST["description"];
-  $bottleSize = $_REQUEST["bottleSize"];
-  $costPerBottle = $_REQUEST["costPerBottle"];
-  $country = $_REQUEST["country"];
-  
-  $changedWine = array(
-    "wineID" => $_REQUEST["wineID"],
-    "name" => $_REQUEST["name"],
-    "colour" => $_REQUEST["colour"],
-    "flavour" => $_REQUEST["flavour"],
-    "description" => $_REQUEST["description"],
-    "bottleSize" => $_REQUEST["bottleSize"],
-    "costPerBottle" => $_REQUEST["costPerBottle"],
-    "countryOfOrigin" => $_REQUEST["country"]
-  );
-  
+  echo "time to edit";
+  echo $_REQUEST["wineID"];
+  $changedWine = new Wine();
+  $changedWine->wineID = $_REQUEST["wineID"];
+  $changedWine->name = $_REQUEST["name"];
+  $changedWine->colour = $_REQUEST["colour"];
+  $changedWine->flavour = $_REQUEST["flavour"];
+  $changedWine->description = $_REQUEST["description"];
+  $changedWine->bottleSize = $_REQUEST["bottleSize"];
+  $changedWine->costPerBottle = $_REQUEST["cost"];
+  $changedWine->countryOfOrigin = $_REQUEST["country"];
+  $changedWine->quantity = $_REQUEST["quantity"];
+  $wine->img = $_FILES['image']['name'];
+  $uploaddir = __DIR__.'/../img/product/';
+  $uploadfile = $uploaddir . basename($_FILES['image']['name']);
+  move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile);
+    
   updateWine($changedWine);
 }
-
-
 
 if (isset($_REQUEST["wineID"])) {
   $wine = getWineByID($_REQUEST["wineID"]);
 } else {
   header('Location: ../wine-manage.php');
 }
-
+$countries = getWineCountries();
 
 ?>

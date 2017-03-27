@@ -1,7 +1,7 @@
 <?php
   class Address {
     private $addressID;
-    private $buildingNameNo;
+    private $NameNo;
     private $line1;
     private $line2;
     private $city;
@@ -14,6 +14,10 @@
 
     function __set($name,$value) {
       $this->$name = $value;
+    }
+    
+    function getFullAddress() {
+      return "$NameNo, $line1, $line2, $city, $country, $postcode";
     }
 
   }

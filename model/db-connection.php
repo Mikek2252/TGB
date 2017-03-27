@@ -58,7 +58,7 @@
   }
 
   function getPageOfWine($page, $perPage) {
-    $start = ($page * $perPage) - $perpage;
+    $start = ($page * $perPage) - $perPage;
     global $pdo;
     $statement = $pdo->prepare('SELECT * FROM Wine LIMIT :offset, :count');
     $statement->bindValue( ':offset', $start, PDO::PARAM_INT );
@@ -85,6 +85,14 @@
     return $wines;
   }
 
+  function getWineCountries() {
+    global $pdo;
+    $statement = $pdo->prepare("SELECT DISTINCT countryOfOrigin FROM Wine ORDER BY countryOfOrigin ASC");
+    $statement->execute();
+    $countries = $statement->fetchAll();
+    return $countries;
+  }
+
   function getWinesOnOffer() {
     global $pdo;
     $date  = date('Y-m-d');
@@ -105,30 +113,31 @@
 
   function addWine($wine) {
     global $pdo;
-    $statement = $pdo->prepare('INSERT INTO Wine (name, colour, flavour, description, bottleSize, costPerBottle, countryOfOrigin) VALUES (?,?,?,?,?,?,?)');
-    $statement->execute([$wine->name,
-                         $wine->color,
-                         $wine->flavour,
-                         $wine->description,
-                         $wine->bottleSize,
-                         $wine->costPerBottle,
-                         $wine->countryOfOrigin]);
-    $statement->fetch();
-	
-  }
-  
-    function updateWine($wine) {
-    global $pdo;
-    $statement = $pdo->prepare('UPDATE Wine SET name = ?, colour = ?, flavour = ?, description = ?, bottleSize = ?, costPerBottle = ?, countryOfOrigin = ?  WHERE wineID = ?');
+    $statement = $pdo->prepare('INSERT INTO Wine (name, colour, flavour, description, bottleSize, costPerBottle, countryOfOrigin, img, quantity) VALUES (?,?,?,?,?,?,?,?,?)');
     $statement->execute([$wine->name,
                          $wine->colour,
                          $wine->flavour,
                          $wine->description,
                          $wine->bottleSize,
                          $wine->costPerBottle,
-                         $wine->countryOfOrigin]);
-    $statement->fetch();
-	
+                         $wine->countryOfOrigin,
+                        $wine->img, 
+                        $wine->quantity]);
+  }
+  
+    function updateWine($wine) {
+    global $pdo;
+    $statement = $pdo->prepare('UPDATE Wine SET name = ?, colour = ?, flavour = ?, description = ?, bottleSize = ?, costPerBottle = ?, countryOfOrigin = ?, img = ?, quantity = ?  WHERE wineID = ?');
+    $statement->execute([$wine->name,
+                         $wine->colour,
+                         $wine->flavour,
+                         $wine->description,
+                         $wine->bottleSize,
+                         $wine->costPerBottle,
+                         $wine->countryOfOrigin,
+                         $wine->img,
+                        $wine->quantity,
+                        $wine->wineID]);
   }
   
   /* SEARCHING DATABASE */
@@ -188,24 +197,37 @@
   function getWinesJSON($colour, $flavour, $country, $price) {
     $string = 'SELECT * FROM Wine WHERE ';
     $params = [];
-    if ($colour != "all") {
-      $string = $string."colour=? ";
+    if ($colour !== "all" && $colour) {
+      $string = $string." colour=? AND";
       array_push($params, $colour);
     }
-    if ($flavour != "all") {
-      $string = $string."flavour=? ";
+    if ($flavour !== "all" && $flavour) {
+      $string = $string." flavour=? AND";
       array_push($params, $flavour);
     }
-    if ($country !== "all") {
-      $string = $string."countryOfOrigin=? ";
+    if ($country !== "all" && $country) {
+      $string = $string." countryOfOrigin=? AND";
       array_push($params, $country);
+    }
+    
+    if (substr($string, -3) == "AND") {
+      $string = substr($string, 0, strlen($string) -3);
     }
     global $pdo;
     $statement = $pdo->prepare($string);
     $statement->execute($params);
     $statement->setFetchMode(PDO::FETCH_CLASS, "Wine");
     $wines = $statement->fetchAll();
-    return json_encode($wines);
+
+    return arrayToJSON($wines);
   }
-  
+
+  function arrayToJSON($array) {
+    $JSON = [];
+    foreach($array as &$item) {
+      $item = json_encode($item);
+      array_push($JSON, $item);
+    }
+    return json_encode($JSON);
+  }
 ?> 

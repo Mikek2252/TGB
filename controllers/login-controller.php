@@ -14,7 +14,8 @@ if (isset($_SESSION["loggedInUser"])) {
 } else if (isset($_REQUEST["loginbutton"])) {
   $username = $_REQUEST["username"];
   $password = $_REQUEST["password"];
-  $currentuser = getCustomer($username, $password);
+  $currentuser = getCustomer($username, password_hash($password, PASSWORD_DEFAULT));
+    echo password_hash($password, PASSWORD_DEFAULT);
   if ($currentuser) {
     $_SESSION["loggedInUser"] = $currentuser;
     header('Location: ../index.php');

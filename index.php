@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+require_once ("controllers/index-controller.php");
+?><!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">

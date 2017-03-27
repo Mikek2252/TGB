@@ -31,6 +31,57 @@ button {
     font-size: 16px;
     padding: 8px 15px; }
 
+label {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  margin-bottom: 10px; }
+
+form {
+  padding: 20px; }
+  form img {
+    display: block;
+    margin-bottom: 20px; }
+  form input:not([type="submit"]),
+  form select,
+  form textarea {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border: 1px solid #c2c2c2;
+    box-shadow: 1px 1px 4px #ebebeb;
+    -moz-box-shadow: 1px 1px 4px #ebebeb;
+    -webkit-box-shadow: 1px 1px 4px #ebebeb;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    display: block;
+    padding: 7px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    width: 100%; }
+  form input[type="submit"] {
+    background: #57c5a0;
+    border: 1px solid #57c5a0;
+    border-radius: 3px;
+    color: #ffffff;
+    display: block;
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: auto;
+    margin-bottom: 15px;
+    width: 150px; }
+  form input,
+  form select {
+    font-family: 'Montserrat', sans-serif; }
+  form textarea {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    height: 90px; }
+  form img {
+    margin: auto;
+    margin-bottom: 20px; }
+
 nav {
   width: 100%;
   display: block; }

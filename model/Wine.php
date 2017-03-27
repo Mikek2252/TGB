@@ -9,7 +9,7 @@
     private $bottleSize;
     private $costPerBottle;
     private $quantity;
-    private $countryOfOrgin;
+    private $countryOfOrigin;
     private $dateAdded;
     private $offer;
 

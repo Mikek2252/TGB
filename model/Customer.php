@@ -17,6 +17,9 @@
     function __set($name,$value) {
       $this->$name = $value;
     }
-
+    
+    function getFullName() {
+      return "$forename $lastname";
+    }
   }
 ?>

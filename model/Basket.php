@@ -2,7 +2,7 @@
   class Basket {
     private $basketID;
     private $customerID;
-    private $items[];
+    private $bItems = [];
 
     function __get($name) {
       return $this->$name;
@@ -14,6 +14,16 @@
     
     function length() {
       return sizeOf($items);
+    }
+    function getTotal() {
+      $total = 0;
+      foreach($items as $item) {
+        $total += ($item->wine->costPerBottle * $item->quantity );
+      }
+      return $total;
+    }
+    function getItems(){
+      return $items;
     }
   }
 ?>

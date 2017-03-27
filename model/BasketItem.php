@@ -1,7 +1,7 @@
 <?php
   class BasketItem {
-    private $basketID;
     private $wineID;
+    private $wine;
     private $quantity;
     private $dateAdded;
 

@@ -27,11 +27,11 @@ require_once ("controllers/archive-product-controller.php");
               <h4>Color</h4>
               <label>all</label>
               <span class="fa fa-chevron-circle-down"></span>
-              <input id="colour" type="text" />
+              <input id="colour" type="text" value="all" />
               <ul>
-                <li name="red">Red</li>
-                <li name="white">White</li>
-                <li name="rose">Rose</li>
+                <li name="Red">Red</li>
+                <li name="White">White</li>
+                <li name="Rose">Rose</li>
                 <li name="all">All</li>
               </ul>
             </div>
@@ -40,12 +40,12 @@ require_once ("controllers/archive-product-controller.php");
               <h4>Type</h4>
               <label>all</label>
               <span class="fa fa-chevron-circle-down"></span>
-              <input id="flavour" type="text" />
+              <input id="flavour" type="text" value="all" />
               <ul>
-                <li name="dry">Dry</li>
-                <li name="sweet">Sweet</li>
-                <li name="light">Light</li>
-                <li name="fullbody">Full bodied</li>
+                <li name="Dry">Dry</li>
+                <li name="Sweet">Sweet</li>
+                <li name="Light">Light</li>
+                <li name="Full bodied">Full bodied</li>
                 <li name="all">All</li>
               </ul>
             </div>
@@ -54,20 +54,21 @@ require_once ("controllers/archive-product-controller.php");
               <h4>Country of Origin</h4>
               <label>all</label>
               <span class="fa fa-chevron-circle-down"></span>
-              <input id="country" type="text" />
+              <input id="country" type="text" value="all" />
               <ul>
-                <li name="France">France</li>
-                <li name="Italy">Italy</li>
-                <li name="Spain">Spain</li>
+                <?php foreach($countries as $country) { ?>
+                <li name="<?= $country[0] ?>"><?= $country[0] ?></li>
+                <?php } ?>
                 <li name="all">All</li>
               </ul>
             </div>
-          </li><li>
+
+          </li><!--<li>
             <div class="dropdown">
               <h4>Price</h4>
               <label>all</label>
               <span class="fa fa-chevron-circle-down"></span>
-              <input id="price" type="text" />
+              <input id="price" type="text" value="all" />
               <ul>
                 <li name="1">&lt; £5</li>
                 <li name="2">£5 - £10</li>
@@ -77,66 +78,10 @@ require_once ("controllers/archive-product-controller.php");
               </ul>
             </div>
           </li>
+-->
         </ul>
-        
-        
       </div>
     </section>
-    
-    <script>
-      $( document ).ready(function() {
-        $('.dropdown').on('click', function() {
-          var icon = $(this).find('.fa');
-          icon.toggleClass('fa-chevron-circle-down');
-          icon.toggleClass('fa-chevron-circle-up');
-          $(this).find('ul').toggle();
-        });
-        $('.dropdown li').on('click', function() {
-
-          var newVal = $(this).attr('name');
-          $(this).parent().parent().find('input').val(newVal);
-          $(this).parent().parent().find('label').text($(this).text());
-        })
-      });
-      
-      function getWinesByFilter() {
-        var price = $("#price").val();
-        var country = $("#country").val();
-        var colour = $("#colour").val();
-        var flavour = $("flavour").val();
-        
-        $.get("services/getWinesService.php?colour="+colour+"&flavour="+flavour+"&country="+country+"&price="+price, winesCallback);
-      }
-      
-
-      function winesCallback(result) {
-        
-        $(".products").not('.row:first').remove();
-        var row;
-        for (var i = 0; i < result.length; i++)
-        {
-          if (i ==0 || i % 3 == 0) {
-            row = $("<div class='row'></div>")
-          }
-          var wine = result[i];
-          var product = $("<div class='product'></div>");
-          
-          product.append("img src='"+wine.url+"' />");
-          product.append("<h2>"+wine.name+"</h2>");
-          product.append("<h4>Colour: "+wine.colour+"</h2>");
-          product.append("<h2>£ "+wine.costPerBottle+"</h2>");
-          
-          var column = $("<div class='column'></div>")
-          column.append(product);
-          $(row).append(column);
-          
-          if (i % 3 === 2 || i === result.length-1) {
-            $("products").append(row);
-          }
-        }
-      }
-
-    </script>
 
     <section class="products">
       <div class="container">
@@ -147,29 +92,30 @@ require_once ("controllers/archive-product-controller.php");
             </div>
           </div>
         </div>
-        <?php foreach($wines as $key => $wine) { ?>
-        <?php if ($key == 0 || $key % 3 == 0 ) { ?>
-        <div class="row">
-        <?php } ?>
-          <div class="three-column">
-            <div class="column">
-              <div class="product">
-                <img src="<?= $wine->getImgURL() ?>" />
-                <h2><?= $wine->name ?></h2>
-                <h4>Colour : <?= $wine->colour ?></h4>
-                <h5>£ <?= $wine->costPerBottle ?></h5>
+        <div class="three-column">
+          <?php foreach($wines as $key => $wine) { ?>
+          <?php if ($key == 0 || $key % 3 == 0 ) { ?>
+          <div class="row">
+          <?php } ?>
+              <div class="column">
+                <div class="product">
+                  <a href="product-page.php?wineID=<?= $wine->wineID ?>"><img src="<?= $wine->getImgURL() ?>" /></a>
+                  <a href="product-page.php?wineID=<?= $wine->wineID ?>"><h2><?= $wine->name ?></h2></a>
+                  <h4>Colour : <?= $wine->colour ?></h4>
+                  <h5>£ <?= $wine->costPerBottle ?></h5>
+                </div>
               </div>
-            </div>
+          <?php if ($key % 3 == 2) { ?>
           </div>
-        <?php if ($key % 3 == 2) { ?>
+          <?php } } ?>
         </div>
-        <?php } } ?>
       </div>
     </section>
     
     <!-- Show products -->
     
-    
+
+    <script src="js/product-filter.js"></script>
     
   </body>
 </html>

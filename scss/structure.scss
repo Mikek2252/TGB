@@ -14,6 +14,9 @@
     > * > .column {
       width: 100%;
     }
+    .row {
+      overflow: hidden;
+    }
   }
   .column,
   .two-col-span,
@@ -22,7 +25,9 @@
     float: left;
     padding: 0 10px;
   }
-  
+  section:first-child {
+    background: #ebe7df;
+  }
 }
 
 @media only screen and(min-width: 480px) {

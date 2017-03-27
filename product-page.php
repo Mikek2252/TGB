@@ -40,8 +40,15 @@ require_once ("controllers/product-controller.php");
               <li>Size : <?= $wine->bottleSize ?> </li>
             </ul>
             <p><?= $wine->description ?></p>
-            
-            <button class="basket">Add to Basket</button>
+            <form action="basket.php" method="post">
+              <input type="hidden" name="wineID" value="<?= $wine->wineID ?>">
+              <select name="quantity">
+                <?php for($i=1; $i< 6; $i++) { ?>
+                <option value="<?= $i ?>"><?= $i ?></option>
+                <?php } ?>
+              </select>
+              <input class="basket" type="submit" value="Add to Basket" name="addToBasket">
+            </form>
             <button class="wishlist">Add to Wishlist</button>
           </div>
         </div>

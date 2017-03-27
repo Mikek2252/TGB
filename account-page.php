@@ -31,12 +31,21 @@ require_once ("controllers/account-controller.php");
             <div class="row">
               <h1>Account Details</h1>
               <ul>
-                <li>Name : <?= $currentuser->getFullName?> </li>
+                <li>Name : <?= $currentuser->getFullName()?> </li>
                 <li>Email : <?= $currentuser->email?></li>
                 <li>Phone number : <?= $currentuser->phoneNumber?></li>
                 <li>Addresses : 
-                
+                  <?php if($currentuser->addresses) { ?>
+                  <ul>
+                  <?php foreach($address as $currentuser->addresses) { ?>
+                    <li><?= $address->getFullAddress() ?></li>
+                  <?php } ?>
+                  </ul>
+                  <?php } else { ?>
+                    No Addresses Available.
+                  <?php } ?>
                 </li>
+                <li></li>
               </ul>
               
             </div>
